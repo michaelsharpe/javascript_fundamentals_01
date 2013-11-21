@@ -10,6 +10,12 @@
 // Find the Google search button and store it in a variable.
 // Modify the text of the button so that it says "Yahooo!" instead.
 
+var logo = document.getElementById("hplogo");
+logo.style.background = "url(http://l.yimg.com/rz/d/yahoo_frontpage_en-CA_s_f_p_101x50_frontpage.png) no-repeat;"
+var button = document.getElementById("gbqfba");
+button.firstElementChild.innerText = "Yahoo!";
+
+
 // EXERCISE: About Me
 
 // Cuz every webpage needs an "About" section.
@@ -38,6 +44,28 @@
 // Replace each of the spans (nickname, favorites, hometown) with your own information.
 // Iterate through each li and change the class to "listitem". Add a style tag that sets a rule for "listitem" to make the color red.
 // Create a new img element and set its src attribute to a picture of you. Append that element to the page.
+
+document.body.setAttribute("Style", "font-family: Arial, sans-serif");
+
+var items = document.getElementsByTagName("li");
+items[0].innerText = "Heru";
+items[1].innerText = "Hobbies!";
+items[2].innerText = "Home planet";
+
+var head = document.getElementsByTagName("head")[0];
+var style = document.createElement('style');
+style.type = "text/css";
+style.innerText = '.listitem { color: red }; ';
+
+head.appendChild(style);
+
+for (i = 0; i < items.length; i++) {
+  items[i].setAttribute("class", ".listitem");
+}
+
+var img = new Image;
+img.src = "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/California_89.svg/385px-California_89.svg.png";
+document.body.appendChild(img);
 
 // EXERCISE: The Book List
 
