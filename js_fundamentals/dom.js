@@ -80,4 +80,53 @@ document.body.appendChild(img);
 // Bonus: Change the style of the book depending on whether you have read it or not.
 
 
+function Book(title, author, image_url, alreadyRead) {
+    this.title = title;
+    this.author = author;
+    this.image = image_url;
+    this.alreadyRead = alreadyRead;
+  }
 
+  var valis = new Book("Valis", "Philip K Dick", "http://dillsnapcogitation.files.wordpress.com/2010/06/valis.jpg", true);
+  var the_magus = new Book("The Magus", "John Fowles", "http://d202m5krfqbpi5.cloudfront.net/books/1225087276l/939875.jpg", true);
+  var snow_crash = new Book("Snow Crash", "Neil Stephenson", "http://upload.wikimedia.org/wikipedia/en/d/d5/Snowcrash.jpg",false);
+
+  var library = {
+    books: [],
+    addBook: function(book) {
+      this.books.push(book);
+    },
+    display: function(){
+      var list = document.createElement("ul");
+      var body = document.body;
+      body.appendChild(list);
+
+      for (i = 0; i < this.books.length; i++) {
+        var book = this.books[i];
+        var phrase = book.title + " by " + book.author;
+        var list_item = document.createElement("li");
+        var image_div = document.createElement("div");
+        var image = document.createElement("img");
+        var p = document.createElement("p");
+        var text = document.createTextNode(phrase);
+
+        // Append elements in order to list item
+        p.appendChild(text);
+        list_item.appendChild(p);
+        image_div.appendChild(image);
+        list_item.appendChild(image_div);
+
+        // Style elements
+        p.setAttribute("style", "text-align: center;")
+        image.setAttribute("src", book.image );
+        image_div.setAttribute("style", "height: 100px; width: 100px; margin-left: 60px;")
+        image.setAttribute("style", "height: 100%; margin: 0 auto;");
+        if (book.alreadyRead == true) {
+          list_item.setAttribute("style", "display: inline-block; float: left; border: 2px solid tomato; border-radius: 5px; width: 200px; height: 200px; padding: 5px; margin: 0px 5px 10px 5px");
+        } else {
+          list_item.setAttribute("style", "display: inline-block; float: left; border: 2px solid green; border-radius: 5px; width: 200px; height: 200px; padding: 5px; margin: 0px 5px 10px 5px");
+        }
+        list.appendChild(list_item);
+      }
+    }
+  }
